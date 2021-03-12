@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Slytherin
 {
-    public partial class Form1 : Form
+    public partial class FrmSlytherin : Form
     {
-        public Form1()
+        public FrmSlytherin()
         {
             InitializeComponent();
         }
