@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pbFondo = new System.Windows.Forms.PictureBox();
             this.lblPuntaje = new System.Windows.Forms.Label();
             this.lblMarcador = new System.Windows.Forms.Label();
             this.lblTextoFinal = new System.Windows.Forms.Label();
+            this.tmrTiempoDeJuego = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbFondo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,12 +45,13 @@
             this.pbFondo.Size = new System.Drawing.Size(541, 560);
             this.pbFondo.TabIndex = 0;
             this.pbFondo.TabStop = false;
+            this.pbFondo.Paint += new System.Windows.Forms.PaintEventHandler(this.updateGraphics);
             // 
             // lblPuntaje
             // 
             this.lblPuntaje.AutoSize = true;
             this.lblPuntaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPuntaje.Location = new System.Drawing.Point(600, 137);
+            this.lblPuntaje.Location = new System.Drawing.Point(642, 13);
             this.lblPuntaje.Name = "lblPuntaje";
             this.lblPuntaje.Size = new System.Drawing.Size(108, 29);
             this.lblPuntaje.TabIndex = 1;
@@ -59,7 +62,7 @@
             // 
             this.lblMarcador.AutoSize = true;
             this.lblMarcador.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarcador.Location = new System.Drawing.Point(714, 137);
+            this.lblMarcador.Location = new System.Drawing.Point(756, 13);
             this.lblMarcador.Name = "lblMarcador";
             this.lblMarcador.Size = new System.Drawing.Size(41, 29);
             this.lblMarcador.TabIndex = 2;
@@ -90,6 +93,8 @@
             this.Name = "FrmSlytherin";
             this.Text = "Slytherin";
             this.Load += new System.EventHandler(this.FrmSlytherin_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyisdown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyisup);
             ((System.ComponentModel.ISupportInitialize)(this.pbFondo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -102,6 +107,7 @@
         private System.Windows.Forms.Label lblPuntaje;
         private System.Windows.Forms.Label lblMarcador;
         private System.Windows.Forms.Label lblTextoFinal;
+        private System.Windows.Forms.Timer tmrTiempoDeJuego;
     }
 }
 

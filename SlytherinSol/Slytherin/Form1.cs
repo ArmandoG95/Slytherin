@@ -31,5 +31,20 @@ namespace Slytherin
         {
 
         }
+
+        private void keyisdown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void keyisup(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void updateGraphics(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
