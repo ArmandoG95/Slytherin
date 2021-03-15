@@ -46,5 +46,13 @@ namespace Slytherin
         {
 
         }
+        private void generateFood()
+        {
+            int maxXpos = pbCanvas.Size.Width / Settings.Width;
+            int maxYpos = pbCanvas.Size.Height / Settings.Height;
+            Random rnd = new Random();
+            food = new Circle { X = rnd.Next(0, maxXpos), Y = rnd.Next(0, maxYpos) };
+            
+        }
     }
 }
