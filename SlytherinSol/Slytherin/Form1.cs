@@ -21,5 +21,10 @@ namespace Slytherin
         {
 
         }
+
+        private void FrmSlytherin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
