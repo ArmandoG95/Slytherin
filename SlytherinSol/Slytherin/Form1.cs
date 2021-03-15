@@ -12,6 +12,8 @@ namespace Slytherin
 {
     public partial class FrmSlytherin : Form
     {
+        private List<Circle> Snake = new List<Circle>();
+        private Circle food = new Circle();
         public FrmSlytherin()
         {
             InitializeComponent();
@@ -46,13 +48,45 @@ namespace Slytherin
         {
 
         }
+        private void startGame()
+        {
+            
+
+            lblTextoFinal.Visible = false;
+            new Settings(); 
+            Snake.Clear(); 
+            Circle head = new Circle { X = 10, Y = 5 }; 
+            Snake.Add(head); 
+
+            lblMarcador.Text = Settings.Score.ToString();
+
+            generateFood(); 
+
+        }
         private void generateFood()
+
         {
             int maxXpos = pbCanvas.Size.Width / Settings.Width;
             int maxYpos = pbCanvas.Size.Height / Settings.Height;
             Random rnd = new Random();
             food = new Circle { X = rnd.Next(0, maxXpos), Y = rnd.Next(0, maxYpos) };
             
+        }
+        private void eat()
+        {
+            
+
+            Circle body = new Circle
+            {
+                X = Snake[Snake.Count - 1].X,
+                Y = Snake[Snake.Count - 1].Y
+
+            };
+
+            Snake.Add(body); 
+            Settings.Score += Settings.Points;
+            lblMarcador.Text = Settings.Score.ToString();
+            generateFood(); 
         }
     }
 }
