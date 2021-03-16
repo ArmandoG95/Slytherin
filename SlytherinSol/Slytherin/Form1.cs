@@ -63,6 +63,10 @@ namespace Slytherin
             generateFood(); 
 
         }
+        private void movePlayer()
+        { 
+
+        }
         private void generateFood()
 
         {
@@ -87,6 +91,10 @@ namespace Slytherin
             Settings.Score += Settings.Points;
             lblMarcador.Text = Settings.Score.ToString();
             generateFood(); 
+        }
+        private void die()
+        {
+
         }
     }
 }
