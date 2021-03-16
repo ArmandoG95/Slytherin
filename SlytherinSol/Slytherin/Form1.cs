@@ -15,6 +15,8 @@ namespace Slytherin
     {
         private List<Circle> Snake = new List<Circle>();
         private Circle food = new Circle();
+        private Circle enemy = new Circle();
+
         public FrmSlytherin()
         {
             InitializeComponent();
@@ -94,6 +96,13 @@ namespace Slytherin
                                             food.Y * Settings.Height,
                                             Settings.Width, Settings.Height
                                             ));
+                    // draw Enemy //////
+                    canvas.FillEllipse(Brushes.Blue,
+                                     new Rectangle(
+                                         enemy.X * Settings.Width,
+                                         enemy.Y * Settings.Height,
+                                         Settings.Width, Settings.Height
+                                         ));
                 }
             }
             else
@@ -119,6 +128,8 @@ namespace Slytherin
             lblMarcador.Text = Settings.Score.ToString();
 
             generateFood();
+
+            
 
         }
         private void movePlayer()
@@ -196,6 +207,13 @@ namespace Slytherin
             food = new Circle { X = rnd.Next(0, maxXpos), Y = rnd.Next(0, maxYpos) };
 
         }
+
+        private void moveEnemy()
+        {
+
+         
+        } 
+
         private void eat()
         {
 
