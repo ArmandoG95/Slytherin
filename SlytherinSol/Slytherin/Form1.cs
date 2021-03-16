@@ -214,7 +214,8 @@ namespace Slytherin
         }
         private void die()
         {
-
+            // change the game over Boolean to true
+            Settings.GameOver = true;
         }
 
         private void updateScreen(object sender, EventArgs e)
