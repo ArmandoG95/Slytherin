@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Slytherin
 {
-    class Circle
+    class Circle 
     {
         public int X { get; set; }
         public int Y { get; set; } 
