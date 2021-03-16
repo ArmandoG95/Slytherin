@@ -110,7 +110,6 @@ namespace Slytherin
                 
                 if (i == 0)
                 {
-                    // move rest of the body according to which way the head is moving
                     switch (Settings.direction)
                     {
                         case Directions.Right:
@@ -126,8 +125,6 @@ namespace Slytherin
                             Snake[i].Y++;
                             break;
                     }
-
-                    // restrict the snake from leaving the canvas
                     int maxXpos = pbFondo.Size.Width / Settings.Width;
                     int maxYpos = pbFondo.Size.Height / Settings.Height;
 
@@ -136,33 +133,24 @@ namespace Slytherin
                         Snake[i].X > maxXpos || Snake[i].Y > maxYpos
                         )
                     {
-                        // end the game is snake either reaches edge of the canvas
-
                         die();
                     }
 
-                    // detect collision with the body
-                    // this loop will check if the snake had an collision with other body parts
                     for (int j = 1; j < Snake.Count; j++)
                     {
                         if (Snake[i].X == Snake[j].X && Snake[i].Y == Snake[j].Y)
                         {
-                            // if so we run the die function
                             die();
                         }
                     }
-
-                    // detect collision between snake head and food
                     if (Snake[0].X == food.X && Snake[0].Y == food.Y)
                     {
-                        //if so we run the eat function
                         eat();
                     }
 
                 }
                 else
                 {
-                    // if there are no collisions then we continue moving the snake and its parts
                     Snake[i].X = Snake[i - 1].X;
                     Snake[i].Y = Snake[i - 1].Y;
                 }
@@ -195,7 +183,6 @@ namespace Slytherin
         }
         private void die()
         {
-            // change the game over Boolean to true
             Settings.GameOver = true;
         }
 
@@ -207,8 +194,6 @@ namespace Slytherin
             {
 
 
-                // si el juego ha terminado y el jugador presiona enter
-                // ejecutamos la función de inicio del juego
 
                 if (Input.KeyPress(Keys.Enter))
                 {
@@ -217,10 +202,6 @@ namespace Slytherin
             }
             else
             {
-                // si el juego no ha terminado, se ejecutarán los siguientes comandos
-
-                // debajo de las acciones se probarán las teclas presionadas por el jugador
-                // y mueva el en consecuencia
 
                 if (Input.KeyPress(Keys.Right) && Settings.direction != Directions.Left)
                 {
@@ -239,10 +220,10 @@ namespace Slytherin
                     Settings.direction = Directions.Down;
                 }
 
-                movePlayer(); // ejecutar la función mover jugador
+                movePlayer();
             }
 
-            pbFondo.Invalidate(); // actualiza el cuadro de imagen y actualiza los gráficos en él
+            pbFondo.Invalidate();
 
         }
     }
