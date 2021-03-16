@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Slytherin
@@ -17,7 +11,7 @@ namespace Slytherin
         public FrmSlytherin()
         {
             InitializeComponent();
-            new Settings(); 
+            new Settings();
 
             tmrTiempoDeJuego.Interval = 1000 / Settings.Speed;
             tmrTiempoDeJuego.Tick += updateScreen;
@@ -55,21 +49,69 @@ namespace Slytherin
 
         private void updateGraphics(object sender, PaintEventArgs e)
         {
+            // this is where we will see the snake and its parts moving
 
+            Graphics canvas = e.Graphics; // create a new graphics class called canvas
+
+            if (Settings.GameOver == false)
+            {
+                // if the game is not over then we do the following
+
+                Brush snakeColour; // create a new brush called snake colour
+
+                // run a loop to check the snake parts
+                for (int i = 0; i < Snake.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        // colour the head of the snake black
+                        snakeColour = Brushes.Black;
+                    }
+                    else
+                    {
+                        // the rest of the body can be green
+                        snakeColour = Brushes.Green;
+                    }
+                    //draw snake body and head
+                    canvas.FillEllipse(snakeColour,
+                                        new Rectangle(
+                                            Snake[i].X * Settings.Width,
+                                            Snake[i].Y * Settings.Height,
+                                            Settings.Width, Settings.Height
+                                            ));
+
+                    // draw food
+                    canvas.FillEllipse(Brushes.Red,
+                                        new Rectangle(
+                                            food.X * Settings.Width,
+                                            food.Y * Settings.Height,
+                                            Settings.Width, Settings.Height
+                                            ));
+                }
+            }
+            else
+            {
+                // this part will run when the game is over
+                // it will show the game over text and make the label 3 visible on the screen
+
+                string gameOver = "Game Over \n" + "Final Score is " + Settings.Score + "\n Press enter to Restart \n";
+                lblTextoFinal.Text = gameOver;
+                lblTextoFinal.Visible = true;
+            }
         }
         private void startGame()
         {
-            
+
 
             lblTextoFinal.Visible = false;
-            new Settings(); 
-            Snake.Clear(); 
-            Circle head = new Circle { X = 10, Y = 5 }; 
-            Snake.Add(head); 
+            new Settings();
+            Snake.Clear();
+            Circle head = new Circle { X = 10, Y = 5 };
+            Snake.Add(head);
 
             lblMarcador.Text = Settings.Score.ToString();
 
-            generateFood(); 
+            generateFood();
 
         }
         private void movePlayer()
@@ -145,11 +187,11 @@ namespace Slytherin
             int maxYpos = pbFondo.Size.Height / Settings.Height;
             Random rnd = new Random();
             food = new Circle { X = rnd.Next(0, maxXpos), Y = rnd.Next(0, maxYpos) };
-            
+
         }
         private void eat()
         {
-            
+
 
             Circle body = new Circle
             {
@@ -158,10 +200,10 @@ namespace Slytherin
 
             };
 
-            Snake.Add(body); 
+            Snake.Add(body);
             Settings.Score += Settings.Points;
             lblMarcador.Text = Settings.Score.ToString();
-            generateFood(); 
+            generateFood();
         }
         private void die()
         {
@@ -170,7 +212,7 @@ namespace Slytherin
 
         private void updateScreen(object sender, EventArgs e)
         {
-        
+
 
             if (Settings.GameOver == true)
             {
