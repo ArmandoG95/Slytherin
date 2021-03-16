@@ -17,6 +17,13 @@ namespace Slytherin
         public FrmSlytherin()
         {
             InitializeComponent();
+            new Settings(); 
+
+            tmrTiempoDeJuego.Interval = 1000 / Settings.Speed;
+            tmrTiempoDeJuego.Tick += updateScreen;
+            tmrTiempoDeJuego.Start();
+
+            startGame();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -94,6 +101,52 @@ namespace Slytherin
         }
         private void die()
         {
+
+        }
+
+        private void updateScreen(object sender, EventArgs e)
+        {
+        
+
+            if (Settings.GameOver == true)
+            {
+
+                // if the game over is true and player presses enter
+                // we run the start game function
+
+                if (Input.KeyPress(Keys.Enter))
+                {
+                    startGame();
+                }
+            }
+            else
+            {
+                //if the game is not over then the following commands will be executed
+
+                // below the actions will probe the keys being presse by the player
+                // and move the accordingly
+
+                if (Input.KeyPress(Keys.Right) && Settings.direction != Directions.Left)
+                {
+                    Settings.direction = Directions.Right;
+                }
+                else if (Input.KeyPress(Keys.Left) && Settings.direction != Directions.Right)
+                {
+                    Settings.direction = Directions.Left;
+                }
+                else if (Input.KeyPress(Keys.Up) && Settings.direction != Directions.Down)
+                {
+                    Settings.direction = Directions.Up;
+                }
+                else if (Input.KeyPress(Keys.Down) && Settings.direction != Directions.Up)
+                {
+                    Settings.direction = Directions.Down;
+                }
+
+                movePlayer(); // run move player function
+            }
+
+            pbFondo.Invalidate(); // refresh the picture box and update the graphics on it
 
         }
     }
