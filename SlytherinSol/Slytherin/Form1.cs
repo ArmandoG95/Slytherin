@@ -29,59 +29,42 @@ namespace Slytherin
             startGame();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FrmSlytherin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void keyisdown(object sender, KeyEventArgs e)
         {
-            // the key down event will trigger the change state from the Input class
             Input.changeState(e.KeyCode, true);
         }
 
         private void keyisup(object sender, KeyEventArgs e)
         {
-            // the key up event will trigger the change state from the Input class
             Input.changeState(e.KeyCode, false);
         }
 
         private void updateGraphics(object sender, PaintEventArgs e)
         {
-            // this is where we will see the snake and its parts moving
+            // aqui es donde veremos a la serpiente y sus partes moviendose
 
-            Graphics canvas = e.Graphics; // create a new graphics class called canvas
+            Graphics canvas = e.Graphics;
 
             if (Settings.GameOver == false)
             {
-                // if the game is not over then we do the following
+              
 
-                Brush snakeColour; // create a new brush called snake colour
+                Brush snakeColour;
 
-                // run a loop to check the snake parts
+                
                 for (int i = 0; i < Snake.Count; i++)
                 {
                     if (i == 0)
                     {
-                        // colour the head of the snake black
+                        
                         snakeColour = Brushes.Black;
                     }
                     else
                     {
-                        // the rest of the body can be green
+                        
                         snakeColour = Brushes.Green;
                     }
-                    //draw snake body and head
+                   
                     canvas.FillEllipse(snakeColour,
                                         new Rectangle(
                                             Snake[i].X * Settings.Width,
@@ -107,8 +90,6 @@ namespace Slytherin
             }
             else
             {
-                // this part will run when the game is over
-                // it will show the game over text and make the label 3 visible on the screen
 
                 string gameOver = "Game Over \n" + "Final Score is " + Settings.Score + "\n Press enter to Restart \n";
                 lblTextoFinal.Text = gameOver;
@@ -134,10 +115,10 @@ namespace Slytherin
         }
         private void movePlayer()
         {
-            // the main loop for the snake head and parts
+            
             for (int i = Snake.Count - 1; i >= 0; i--)
             {
-                // if the snake head is active 
+                
                 if (i == 0)
                 {
                     // move rest of the body according to which way the head is moving

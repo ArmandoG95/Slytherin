@@ -56,7 +56,6 @@
             this.lblPuntaje.Size = new System.Drawing.Size(108, 29);
             this.lblPuntaje.TabIndex = 1;
             this.lblPuntaje.Text = "Puntaje:";
-            this.lblPuntaje.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // lblMarcador
             // 
@@ -92,7 +91,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmSlytherin";
             this.Text = "Slytherin";
-            this.Load += new System.EventHandler(this.FrmSlytherin_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.keyisdown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.keyisup);
             ((System.ComponentModel.ISupportInitialize)(this.pbFondo)).EndInit();
