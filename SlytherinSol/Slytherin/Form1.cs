@@ -91,7 +91,7 @@ namespace Slytherin
             else
             {
 
-                string gameOver = "Game Over \n" + "Final Score is " + Settings.Score + "\n Press enter to Restart \n";
+                string gameOver = "Game Over \n" + "Tu puntuación final es: " + Settings.Score + "\n Presiona enter para reiniciar \n";
                 lblTextoFinal.Text = gameOver;
                 lblTextoFinal.Visible = true;
             }
@@ -109,6 +109,8 @@ namespace Slytherin
             lblMarcador.Text = Settings.Score.ToString();
 
             generateFood();
+
+            //generateEnemy();
 
             
 
@@ -177,10 +179,13 @@ namespace Slytherin
 
         }
 
-        private void moveEnemy()
+        private void generateEnemy()
         {
+            //int maxXpos = pbFondo.Size.Width / Settings.Width;
+            //int maxYpos = pbFondo.Size.Height / Settings.Height;
+            //Random rnd = new Random();
+            //enemy = new Circle { X = rnd.Next(0, maxXpos), Y = rnd.Next(0, maxYpos) };
 
-         
         } 
 
         private void eat()
