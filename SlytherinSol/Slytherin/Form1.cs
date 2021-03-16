@@ -175,8 +175,9 @@ namespace Slytherin
             if (Settings.GameOver == true)
             {
 
-                // if the game over is true and player presses enter
-                // we run the start game function
+
+                // si el juego ha terminado y el jugador presiona enter
+                // ejecutamos la función de inicio del juego
 
                 if (Input.KeyPress(Keys.Enter))
                 {
@@ -185,10 +186,10 @@ namespace Slytherin
             }
             else
             {
-                //if the game is not over then the following commands will be executed
+                // si el juego no ha terminado, se ejecutarán los siguientes comandos
 
-                // below the actions will probe the keys being presse by the player
-                // and move the accordingly
+                // debajo de las acciones se probarán las teclas presionadas por el jugador
+                // y mueva el en consecuencia
 
                 if (Input.KeyPress(Keys.Right) && Settings.direction != Directions.Left)
                 {
@@ -207,10 +208,10 @@ namespace Slytherin
                     Settings.direction = Directions.Down;
                 }
 
-                movePlayer(); // run move player function
+                movePlayer(); // ejecutar la función mover jugador
             }
 
-            pbFondo.Invalidate(); // refresh the picture box and update the graphics on it
+            pbFondo.Invalidate(); // actualiza el cuadro de imagen y actualiza los gráficos en él
 
         }
     }
